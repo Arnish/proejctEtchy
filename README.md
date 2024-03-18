@@ -1,1 +1,1 @@
-# proejctEtchy
+# projectEtchy
