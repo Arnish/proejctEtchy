@@ -3,6 +3,8 @@
 }
 
 .container {
-    border: solid lightblue;
-    border-width: 2px;
+    background-color: lightgrey;
+    width: 100px;
+    border: 2px solid green;
+    padding: 50px;
 }
