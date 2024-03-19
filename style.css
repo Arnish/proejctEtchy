@@ -1,0 +1,8 @@
+.flexContainer {
+    display:flex
+}
+
+.container {
+    border: solid lightblue;
+    border-width: 2px;
+}
