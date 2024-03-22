@@ -6,12 +6,18 @@ let i = 0; //initialize the variable i for our loop
 let m = 0;
 
 //const flexContainer = document.getElementById("mainContainer"); //this grabs the id "flex-container" from my HTML document so we can use and reference it in our javascript code
-const btnAdd = document.querySelector(".btnAdd");
 
-btnAdd.addEventListener("click", containers);
+//const btnAdd = document.querySelector(".btnAdd");  //edited out button to put in prompt so we can let user decide how many squares they want!
+//btnAdd.addEventListener("click", containers); //see above
+
+let gridCount = prompt("How many grids do you want?");
+
+if (gridCount <= 0) {
+    gridCount = 16;
+};
 
 function containers() {
-    while (i<16) {
+    while (i<gridCount) {
         m = 0; // resets M to zero everytime a new mainDiv is created
 
         const mainDiv = document.createElement("div");
@@ -21,7 +27,7 @@ function containers() {
         flexContainer.style.display ="flex"; // doing it here because you would have to do it 16+ times with each numerical interval per invrement to get all the mainContainer's taken care of!
         console.log (flexContainer);
         console.log("main" + i);
-        while (m < 16) {
+        while (m < gridCount) {
             const newDiv = document.createElement("div");
             newDiv.classList.add("container");
             flexContainer.append(newDiv); //appendChild didnt work because its jquery apparently
