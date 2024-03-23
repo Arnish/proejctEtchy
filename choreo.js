@@ -7,14 +7,18 @@ let m = 0;
 
 //const flexContainer = document.getElementById("mainContainer"); //this grabs the id "flex-container" from my HTML document so we can use and reference it in our javascript code
 
-//const btnAdd = document.querySelector(".btnAdd");  //edited out button to put in prompt so we can let user decide how many squares they want!
-//btnAdd.addEventListener("click", containers); //see above
+const btnAdd = document.querySelector(".btnAdd");  //edited out button to put in prompt so we can let user decide how many squares they want!
+btnAdd.addEventListener("click", containers); //see above
 
-let gridCount = prompt("How many grids do you want?");
+let gridCount = parseInt(prompt("How many grids do you want?"));
+//parseInt(gridCount);
+
 
 if (gridCount <= 0) {
     gridCount = 16;
 };
+
+console.log(typeof gridCount + gridCount);
 
 function containers() {
     while (i<gridCount) {
