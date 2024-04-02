@@ -50,3 +50,12 @@ current problem
  ++ another solution here is to get rid of the nested while loop and just use flex-wrap as it does what im trying to achieve with this...
 
 */
+
+/*to do list:
+- hover effect
+- add a button to change grid number (max limit of 100)
+
+**extras:
+- RGB squares, random color every interaction
+- each tile gets darker with each over, 10% more per hover
+*/
