@@ -22,25 +22,28 @@ let gridCount = parseInt(prompt("How many grids do you want?"));
 
 function promptReset () {
     //make a while loop to delete the previous grids
-if (gridCount>0) {
-    while (n<gridCount) {
-        const currentGrid = document.getElementById("mainContainer" + [n]);
-        console.log(currentGrid);
-        currentGrid.remove();
-        n++;
-    }
-}   
+    if (gridCount>0) {
+        while (n<gridCount) {
+            //console.log(n);
+            const currentGrid = document.getElementById("mainContainer" + [n]);
+            console.log(currentGrid);
+            currentGrid.remove();
+            n++;
+        }
+    }   
+    
     gridCount = parseInt(prompt("How many grids do you want?"));
 };
 
-if (gridCount <= 0) {
-    gridCount = 16;
-};
+    if (gridCount <= 0) {
+        gridCount = 16;
+    };
 
-console.log(typeof gridCount + gridCount);
+    console.log(typeof gridCount + gridCount);
 
 //two while functions, one for rows and one for columns!
 function containers() {
+    i=0 //resets i to 0 (or else it stays as it was the previous iteration) everytime the "create" button is clicked!
     while (i<gridCount) {
         m = 0; // resets M to zero everytime a new mainDiv is created
 
