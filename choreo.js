@@ -4,15 +4,34 @@
 */
 let i = 0; //initialize the variable i for our loop
 let m = 0;
+let n = 0;
 
 //const flexContainer = document.getElementById("mainContainer"); //this grabs the id "flex-container" from my HTML document so we can use and reference it in our javascript code
 
-const btnAdd = document.querySelector(".btnAdd");  //edited out button to put in prompt so we can let user decide how many squares they want!
-btnAdd.addEventListener("click", containers); //see above
+//button to create the grids
+const btnAdd = document.querySelector(".btnAdd"); //grabs the button and stores it in a variable so we can edit it below
+btnAdd.addEventListener("click", containers); 
+
+const btnReset = document.querySelector(".btnReset");
+btnReset.addEventListener("click", promptReset);
+
+
 
 let gridCount = parseInt(prompt("How many grids do you want?"));
 //parseInt(gridCount);
 
+function promptReset () {
+    //make a while loop to delete the previous grids
+if (gridCount>0) {
+    while (n<gridCount) {
+        const currentGrid = document.getElementById("mainContainer" + [n]);
+        console.log(currentGrid);
+        currentGrid.remove();
+        n++;
+    }
+}   
+    gridCount = parseInt(prompt("How many grids do you want?"));
+};
 
 if (gridCount <= 0) {
     gridCount = 16;
@@ -20,6 +39,7 @@ if (gridCount <= 0) {
 
 console.log(typeof gridCount + gridCount);
 
+//two while functions, one for rows and one for columns!
 function containers() {
     while (i<gridCount) {
         m = 0; // resets M to zero everytime a new mainDiv is created
@@ -31,7 +51,7 @@ function containers() {
         flexContainer.style.display ="flex"; // doing it here because you would have to do it 16+ times with each numerical interval per invrement to get all the mainContainer's taken care of!
         console.log (flexContainer);
         console.log("main" + i);
-        while (m < gridCount) {
+        while (m < gridCount) { 
             const newDiv = document.createElement("div");
             newDiv.classList.add("container");
             flexContainer.append(newDiv); //appendChild didnt work because its jquery apparently
