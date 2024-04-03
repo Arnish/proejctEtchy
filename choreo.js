@@ -12,12 +12,12 @@ let n = 0;
 const btnAdd = document.querySelector(".btnAdd"); //grabs the button and stores it in a variable so we can edit it below
 btnAdd.addEventListener("click", containers); 
 
-const btnReset = document.querySelector(".btnReset");
-btnReset.addEventListener("click", promptReset);
+const btnReset = document.querySelector(".btnReset"); //reset button
+btnReset.addEventListener("click", promptReset); //when clicked it activates the function below
 
 
 
-let gridCount = parseInt(prompt("How many grids do you want?"));
+let gridCount = parseInt(prompt("How many grids do you want?")); //takes the answer and turns it into an integer to be used in the loops!
 //parseInt(gridCount);
 
 function promptReset () {
@@ -31,12 +31,14 @@ function promptReset () {
             n++;
         }
     }   
-    
     gridCount = parseInt(prompt("How many grids do you want?"));
+    while (gridCount <= 0 || gridCount >= 100) { //reused loop from below to set limits to grid count
+        gridCount = parseInt(prompt("How many grids do you want?"));
+    };
 };
 
-    if (gridCount <= 0) {
-        gridCount = 16;
+    while (gridCount <= 0 || gridCount >= 100) { //loop for setting limit to the grid count
+        gridCount = parseInt(prompt("How many grids do you want?"));
     };
 
     console.log(typeof gridCount + gridCount);
