@@ -48,12 +48,13 @@ function containers() {
     i=0 //resets i to 0 (or else it stays as it was the previous iteration) everytime the "create" button is clicked!
     while (i<gridCount) {
         m = 0; // resets M to zero everytime a new mainDiv is created
+        const mainContainer = document.getElementById("bodyMain");
 
-        const mainDiv = document.createElement("div");
+        const mainDiv = document.createElement("div"); //creates a div
         mainDiv.id = "mainContainer" + [i]; //adds an ID instead of a class, added an interval here so it can differentiate the new containers from the old
-        document.body.append(mainDiv);
+        mainContainer.append(mainDiv); //adds the created Div with ID of mainContainer into the main element in the HTML
         const flexContainer = document.getElementById("mainContainer" + [i]); //dont forget to include the interval here as well!!
-        flexContainer.style.display ="flex"; // doing it here because you would have to do it 16+ times with each numerical interval per invrement to get all the mainContainer's taken care of!
+        //flexContainer.style.display ="flex"; // doing it here because you would have to do it 16+ times with each numerical interval per invrement to get all the mainContainer's taken care of!
         console.log (flexContainer);
         console.log("main" + i);
         while (m < gridCount) { 
@@ -83,4 +84,10 @@ current problem
 **extras:
 - RGB squares, random color every interaction
 - each tile gets darker with each over, 10% more per hover
+*/
+
+/*Learned:
+- DOM, adding and removing elements
+- appending elements (append child normally but it didnt work because apparently its jquery)
+- flex (need to refresh myself on this)
 */
