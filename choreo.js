@@ -4,7 +4,7 @@
 */
 let i = 0; //initialize the variable i for our loop
 let m = 0;
-let n = 0;
+//let n = 0;
 
 //const flexContainer = document.getElementById("mainContainer"); //this grabs the id "flex-container" from my HTML document so we can use and reference it in our javascript code
 
@@ -22,52 +22,46 @@ let gridCount = parseInt(prompt("How many grids do you want?")); //takes the ans
 
 function promptReset () {
     //make a while loop to delete the previous grids
-    if (gridCount>0) {
-        while (n<gridCount) {
-            //console.log(n);
-            const currentGrid = document.getElementById("mainContainer" + [n]);
-            console.log(currentGrid);
-            currentGrid.remove();
-            n++;
-        }
-    }   
+    for (i=0; i<gridCount; i++) {
+        const currentGrid = document.getElementById("row" + [i]);
+        console.log(currentGrid);
+        currentGrid.remove();
+    }
+
+
     gridCount = parseInt(prompt("How many grids do you want?"));
     while (gridCount <= 0 || gridCount >= 100) { //reused loop from below to set limits to grid count
         gridCount = parseInt(prompt("How many grids do you want?"));
-    };
-};
+    }
+}
 
     while (gridCount <= 0 || gridCount >= 100) { //loop for setting limit to the grid count
         gridCount = parseInt(prompt("How many grids do you want?"));
-    };
+    }
 
     console.log(typeof gridCount + gridCount);
 
 //two while functions, one for rows and one for columns!
 function containers() {
-    i=0 //resets i to 0 (or else it stays as it was the previous iteration) everytime the "create" button is clicked!
-    while (i<gridCount) {
-        m = 0; // resets M to zero everytime a new mainDiv is created
-        const mainContainer = document.getElementById("bodyMain");
+    //let totalGrid = gridCount*gridCount;
 
-        const mainDiv = document.createElement("div"); //creates a div
-        mainDiv.id = "mainContainer" + [i]; //adds an ID instead of a class, added an interval here so it can differentiate the new containers from the old
-        mainContainer.append(mainDiv); //adds the created Div with ID of mainContainer into the main element in the HTML
-        const flexContainer = document.getElementById("mainContainer" + [i]); //dont forget to include the interval here as well!!
-        //flexContainer.style.display ="flex"; // doing it here because you would have to do it 16+ times with each numerical interval per invrement to get all the mainContainer's taken care of!
-        console.log (flexContainer);
-        console.log("main" + i);
-        while (m < gridCount) { 
-            const newDiv = document.createElement("div");
-            newDiv.classList.add("container");
-            flexContainer.append(newDiv); //appendChild didnt work because its jquery apparently
-            console.log("added" + m); //testing
-            m++;
+    for (i=0; i<gridCount; i++) {
+        const item = document.createElement("div");
+        item.id = "row" + [i];
+        const parentDiv = document.getElementById("bodyMain");
+        item.style.display = "flex";
+        item.style.flexWrap = "wrap";
+        item.style.flexGrow = 1;
+        parentDiv.appendChild(item);
+        const itemContainer = document.getElementById("row" + [i]);
+
+        for(m=0; m<gridCount; m++) {
+            const columnItems = document.createElement("div");
+            columnItems.classList.add("item");
+            itemContainer.appendChild(columnItems);
         }
-    i++;
-    }    
+    }
 }
-
 
 /* Problems faced:
 current problem
@@ -78,6 +72,8 @@ current problem
 */
 
 /*to do list:
+**** MAKE AN ALGORITHM to scale based on the gridcount
+ ---- for example, if its a gridcount of 10, make the algorithm make each cube 10% of the width and if its 64, make it cubewidth/64 and what not
 - hover effect
 - add a button to change grid number (max limit of 100)
 
