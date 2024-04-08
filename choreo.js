@@ -49,16 +49,16 @@ function containers() {
         const item = document.createElement("div");
         item.id = "row" + [i];
         const parentDiv = document.getElementById("bodyMain");
-        item.style.display = "flex";
-        item.style.flexWrap = "wrap";
-        item.style.flexGrow = 1;
+        item.style.display = "flex"; //really weird layout without this
+        //item.style.flexWrap = "wrap"; //don't seem to need this
+        item.style.flexGrow = 1; //to fill up the space of the main container, without it it becomes really skinny
         parentDiv.appendChild(item);
         const itemContainer = document.getElementById("row" + [i]);
 
         for(m=0; m<gridCount; m++) {
             const columnItems = document.createElement("div");
             columnItems.classList.add("item");
-            itemContainer.appendChild(columnItems);
+            itemContainer.appendChild(columnItems); //append to the previous container just made and not the bodyMain in HTML
         }
     }
 }
