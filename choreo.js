@@ -5,7 +5,7 @@
 let i = 0; //initialize the variable i for our loop
 let m = 0;
 //let n = 0;
-
+let testing2 = []; //global initializing to use later
 //const flexContainer = document.getElementById("mainContainer"); //this grabs the id "flex-container" from my HTML document so we can use and reference it in our javascript code
 
 //button to create the grids
@@ -45,23 +45,55 @@ function promptReset () {
 function containers() {
     //let totalGrid = gridCount*gridCount;
 
-    for (i=0; i<gridCount; i++) {
+    for (i=0; i<gridCount; i++) { //rows
         const item = document.createElement("div");
         item.id = "row" + [i];
         const parentDiv = document.getElementById("bodyMain");
         item.style.display = "flex"; //really weird layout without this
-        //item.style.flexWrap = "wrap"; //don't seem to need this
+        item.style.flexWrap = "wrap"; //the children will go out of bounds beyond the container without making them wrap around
+        //item.style.backgroundColor = "white";
         item.style.flexGrow = 1; //to fill up the space of the main container, without it it becomes really skinny
         parentDiv.appendChild(item);
         const itemContainer = document.getElementById("row" + [i]);
+         
+        // item.firstElementChild.style.borderRadius = "2px"; //testing
+        // if(i=0) {
+        //     item.firstChild.style.borderTopLeftRadius = "10px"; //didnt work : ()
+        // }
 
-        for(m=0; m<gridCount; m++) {
+        for(m=0; m<gridCount; m++) { //columns
             const columnItems = document.createElement("div");
             columnItems.classList.add("item");
             itemContainer.appendChild(columnItems); //append to the previous container just made and not the bodyMain in HTML
         }
     }
+
+    //hovering(); //added a call to a diff function like this to stop the contexts of the next function from going off instantly before the divs in this function was even created
+    
+    //gets all elements that are div with the class item in it **remember this variable is going to be an array/nodelist so treat it as such **current problem, the queryselector isnt grabbing anything because it executes before the items are created
+    // MAKE THIS A GLOBAL VARIABLE NOT JUST IN HERE, initialize it in the beggining tomorrow
+    //console.log(testing2); 
 }
+
+/*this function is for the hovering one on line 71
+function hovering() {
+
+testing2 = document.querySelectorAll("div.item");
+console.log(testing2); //doesnt seem to grab the queryselector from in the function
+//now you have to add the class item2 to each node in testing2
+/*
+testing2.forEach((element) => {
+    element.classList.add("item2");
+});
+}*/
+
+/*
+testing2.addEventListener("mouseover", changeColor)
+
+function changeColor() {
+    testing2.classList.add("item2");
+}
+*/
 
 /* Problems faced:
 current problem
@@ -72,7 +104,7 @@ current problem
 */
 
 /*to do list:
-**** MAKE AN ALGORITHM to scale based on the gridcount
+[DONE] MAKE AN ALGORITHM to scale based on the gridcount (didn't need an "algorithm," just use flexbox properly. )
  ---- for example, if its a gridcount of 10, make the algorithm make each cube 10% of the width and if its 64, make it cubewidth/64 and what not
 - hover effect
 - add a button to change grid number (max limit of 100)
@@ -80,6 +112,7 @@ current problem
 **extras:
 - RGB squares, random color every interaction
 - each tile gets darker with each over, 10% more per hover
+- make the first last item of the first and last row curved by giving it a border radius in the appropriate direction, figure out the algorithm to target those areas! 
 */
 
 /*Learned:
