@@ -3,17 +3,26 @@
     flex-wrap: wrap;
     flex-direction: column; /*without this the grid came out all wonky, this makes all the items fall into the proper columns! */
     /*justify-content: flex-start;*/     /*dont really seem to need this */
-    border: 2px solid red;
+    border: 30px solid red;
     width: 600px;
     height: 600px;
 }
 
 .item {
-    background-color: lightgrey;
     width: 20px;
-    border: 0.5px solid green;
+    border: 0.5px solid lightgrey;
     height: 20px;
     /*display: flex;*/ /*dont seem to need this*/
     flex: 1; /*fills the space of the container left to right */
     height: 100%; /* fills the space of the container top to bottom */
+    background-color: whitesmoke;
+    /*overflow: auto;*/
+}
+
+.item:hover {
+    background-color: salmon;
+}
+
+.background {
+    background-color: slategray;
 }
